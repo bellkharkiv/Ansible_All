@@ -1,0 +1,13 @@
+---
+- name: Install web server 
+  hosts: node2
+#  remote_user: node2
+  become: yes 
+  become_user: root
+  become_method: sudo
+  tasks:
+  - name: install Apache
+    apt: name=nginx state=latest
+
+  - name: Start Apache
+    service: name=nginx state=started enabled=yes  

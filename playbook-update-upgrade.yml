@@ -1,0 +1,26 @@
+---
+- hosts: node2
+
+  tasks:
+#    - ping: ~
+
+
+    - name: Update APT package manager repositories cache
+      become: true
+      become_method: sudo
+      become_user: root
+      apt:
+        update_cache: yes
+
+    - name: Upgrade installed packages
+      become: true
+      become_method: sudo
+      become_user: root
+      apt:
+        upgrade: dist
+
+#    - name: Install cowsay - it's probably important
+#      become: true
+#      apt:
+#        name: cowsay
+

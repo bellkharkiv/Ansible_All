@@ -1,0 +1,16 @@
+---
+  - hosts: node2
+    become: yes
+
+    tasks:
+#    - name: Create group tester
+#      action: group name=tester state=present
+
+#    - name: Add user to system
+#      user: name=tester shell=/bin/bash groups=tester append=yes
+
+#    - name: Update package list
+#      apt: cache_valid_time=3600 update_cache=yes
+
+    - name: Install Nginx package
+      package: name=nginx state=latest

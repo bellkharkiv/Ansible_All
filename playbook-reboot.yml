@@ -1,0 +1,15 @@
+---
+- hosts: node2
+  tasks: 
+#   - ping: ~
+   - name: reboot
+#     become: true
+     reboot:
+
+#- hosts: node2
+#  tasks:
+#    - ping: ~
+#    - name: reboot
+#      become: true
+#      reboot:
+       # update_cache: yes

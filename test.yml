@@ -1,0 +1,23 @@
+---
+- hosts: node2                                                                                                                                                
+  remote_user: node2
+  become: yes 
+  become_user: root
+  become_method: sudo
+  tasks:
+  - name: create ansible user
+    user: 
+      name: ansible 
+      shell: /bin/bash 
+      home: /home/ansible 
+
+  - name: copy ssh pubkey to home directory
+    authorized_key: 
+      user: ansible 
+      key: "{{ lookup('file', './ansible_pubkey') }}"
+  
+  - name: adding ansible user to sudoers
+    lineinfile: 
+      dest: /etc/sudoers 
+      line: "ansible ALL=(ALL)       NOPASSWD: ALL" 
+      validate: 'visudo -cf %s'
